@@ -11,6 +11,8 @@
 	<link rel="stylesheet" href="css/normalize.min.css">
 	<link rel="stylesheet" href="css/main.css">
 
+
+<!-- Kamerazugriff -->
 	<script src="js/vendor/modernizr-2.8.3.min.js"></script>
 
 
@@ -19,11 +21,13 @@
 	<script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
 	<script src="https://unpkg.com/aframe-animation-component@^5.1.2/dist/aframe-animation-component.min.js"></script>
 	<!-- include ar.js -->
-	<!-- <script src="js/vendor/aframe/build/aframe-ar.js"></script> -->
+	<script src="js/vendor/aframe/build/aframe-ar.js"></script>
 </head>
 
 <body>
-	<a-scene>
+
+	<!-- Rahmen angepasst -->
+	<a-scene embedded arjs="patternRatio: 0.7">
 
 		<a-assets>
 			<a-asset-item id="erde" src="/assets/erde.gltf"></a-asset-item>
@@ -35,9 +39,10 @@
 			<a-asset-item id="uranus" src="/assets/uranus.gltf"></a-asset-item>
 			<a-asset-item id="neptun" src="/assets/neptun.gltf"></a-asset-item>
 
-
-
 		</a-assets>
+
+		<a-marker preset="custom" type="pattern" url="patterns/1.patt">
+			
 
 		<!-- Erde -->
 		<!-- Duration wird in Millisekunden (5000 msec. = 5 Sek)angegeben -->
@@ -62,7 +67,6 @@
 		</a-entity>
 
 
-
 		<!-- Mercury -->
 
 		<a-entity>
@@ -70,17 +74,23 @@
 				<a-entity gltf-model="#mercury" position="0 0 -3" scale="0.2 0.2 0.2"></a-entity>
 
 			</a-entity>
-			<a-animation attribute="rotation" dur="5000" to="0 360 0" repeat="indefinite" easing="linear"></a-animation>
+			<a-animation attribute="rotation" dur="2000" to="0 360 0" repeat="indefinite" easing="linear"></a-animation>
 		</a-entity>
 
 		<!-- Venus -->
+
+<a-box src="/assets/skin4.jpg">
+	
+
+</a-box>
+
 
 		<a-entity>
 			<a-entity position="0 0 0" rotation="0 135 0">
 				<a-entity gltf-model="#venus" position="0 0 -4" scale="0.2 0.2 0.2"></a-entity>
 
 			</a-entity>
-			<a-animation attribute="rotation" dur="5000" to="0 360 0" repeat="indefinite" easing="linear"></a-animation>
+			<a-animation attribute="rotation" dur="3000" to="0 360 0" repeat="indefinite" easing="linear"></a-animation>
 		</a-entity>
 
 		<!-- Jupiter -->
@@ -121,13 +131,15 @@
 
 
 
-
 				</a-entity>
+
+				</a-marker>
 
 
 				<!-- CAMERA -->
-				<a-camera camera position="0 0 0">
-				</a-camera>
+
+				<a-entity camera></a-entity>
+		
 
 			</a-scene>
 
